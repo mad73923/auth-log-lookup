@@ -12,9 +12,9 @@ def main():
         if(match_obj):
             ip = match_obj.group()
             if ip in ip_occurrence:
-                ip_occurrence[ip] += 1
+                ip_occurrence[ip]['occurrence'] += 1
             else:
-                ip_occurrence[ip] = 1
+                ip_occurrence[ip] = {'occurrence': 1}
     print ip_occurrence
 
 

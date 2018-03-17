@@ -1,3 +1,4 @@
+import sys
 import re
 import requests
 from mpl_toolkits.basemap import Basemap
@@ -11,7 +12,7 @@ ip_regex = r'\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}'
 ip_occurrence = {}
 
 def get_ip_addresses():
-    fil = open("auth.log", "r")
+    fil = open(sys.argv[1], "r")
     for line in fil.readlines():
         match_obj = re.search(ip_regex, line)
         if(match_obj):

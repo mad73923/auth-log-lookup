@@ -1,4 +1,5 @@
 import re
+import requests
 
 ip_regex = r'\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}'
 
@@ -15,6 +16,13 @@ def main():
                 ip_occurrence[ip]['occurrence'] += 1
             else:
                 ip_occurrence[ip] = {'occurrence': 1}
+
+    for ip_address in ip_occurrence:
+        location = requests.get('http://ipinfo.io/'+ip_address).json()
+        location.pop('ip')
+        ip_occurrence[ip_address].update(location)
+        pass
+    
     print ip_occurrence
 
 
